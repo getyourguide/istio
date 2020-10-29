@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/golang:latest
 WORKDIR /go/src/github.com/envoyproxy/go-control-plane/
 ARG test_out_bin=bin/test-linux
 ENV CGO_ENABLED 1

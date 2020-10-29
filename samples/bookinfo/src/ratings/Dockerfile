@@ -12,7 +12,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-FROM node:4-slim
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/node:4-slim
 
 COPY package.json /opt/microservices/
 COPY ratings.js /opt/microservices/

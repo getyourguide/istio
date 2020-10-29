@@ -1,4 +1,4 @@
-FROM golang:1.10.0-alpine
+FROM golang:1.10.0-890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/alpine
 
 # cache buster
 RUN echo 4 

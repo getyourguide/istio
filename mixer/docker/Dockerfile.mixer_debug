@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/ubuntu:xenial
 
 # obtained from debian ca-certs deb using fetch_cacerts.sh
 ADD ca-certificates.tgz /

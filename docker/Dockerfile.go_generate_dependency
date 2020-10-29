@@ -1,4 +1,4 @@
-FROM alpine:3.7 as go_generate_dependency_builder
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/alpine:3.7 as go_generate_dependency_builder
 RUN apk add --no-cache build-base git
 
 RUN apk update

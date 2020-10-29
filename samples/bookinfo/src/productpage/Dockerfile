@@ -12,7 +12,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-FROM python:2.7-slim
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/python:2.7-slim
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt

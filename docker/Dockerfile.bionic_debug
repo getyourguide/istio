@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/ubuntu:bionic
 # Base image for debug builds.
 # Built manually uploaded as "istionightly/base_debug"
 

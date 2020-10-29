@@ -1,4 +1,4 @@
-FROM alpine:3.7 as prototool_download
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/alpine:3.7 as prototool_download
 
 RUN apk update && \
         apk add curl && \

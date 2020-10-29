@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/ubuntu:xenial
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     iproute2 \
     iptables \

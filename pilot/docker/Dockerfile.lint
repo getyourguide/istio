@@ -1,4 +1,4 @@
-FROM    golang:1.9.1-alpine
+FROM    golang:1.9.1-890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/alpine
 
 RUN     apk add -U git
 

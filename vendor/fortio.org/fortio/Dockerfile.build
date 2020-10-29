@@ -1,5 +1,5 @@
 # Dependencies and linters for build:
-FROM ubuntu:xenial
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/ubuntu:xenial
 # Need gcc for -race test (and some linters though those work with CGO_ENABLED=0)
 RUN apt-get -y update && \
   apt-get --no-install-recommends -y upgrade && \

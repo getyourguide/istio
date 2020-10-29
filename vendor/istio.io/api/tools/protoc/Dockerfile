@@ -1,7 +1,7 @@
 # Based on: https://github.com/znly/docker-protobuf/blob/master/Dockerfile
 # Modified to slim down the image and adjust for Istio
 
-FROM alpine:3.7 as protoc_builder
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/alpine:3.7 as protoc_builder
 RUN apk add --no-cache build-base curl automake autoconf libtool git zlib-dev
 
 ENV GRPC_VERSION=1.8.3 \
@@ -44,7 +44,7 @@ RUN upx --lzma \
         /out/usr/bin/grpc_* \
         /out/usr/bin/protoc-gen-*
 
-FROM alpine:3.7
+FROM 890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/alpine:3.7
 RUN apk add --update --no-cache libstdc++ make bash git openssh
 COPY --from=packer /out/ /
 

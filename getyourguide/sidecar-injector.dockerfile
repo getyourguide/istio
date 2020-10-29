@@ -1,4 +1,4 @@
-FROM golang:1.11.13-alpine AS builder
+FROM golang:1.11.13-890546402176.dkr.ecr.eu-central-1.amazonaws.com/hubdockercom/alpine AS builder
 
 COPY . /go/src/istio.io/istio/
 
