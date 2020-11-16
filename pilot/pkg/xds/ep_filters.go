@@ -21,7 +21,6 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/wrappers"
 
-	"istio.io/istio/pilot/pkg/model"
 	"istio.io/istio/pilot/pkg/networking/util"
 )
 
@@ -70,10 +69,6 @@ func EndpointsByNetworkFilter(b EndpointBuilder, endpoints []*endpoint.LocalityL
 				if !b.canViewNetwork(epNetwork) {
 					continue
 				}
-				if tlsMode := envoytransportSocketMetadata(lbEp, "tlsMode"); tlsMode == model.DisabledTLSModeLabel {
-					// dont allow cross-network endpoints for uninjected traffic
-					continue
-				}
 
 				// Remote network endpoint which can not be accessed directly from local network.
 				// Increase the weight counter
@@ -112,8 +107,6 @@ func EndpointsByNetworkFilter(b EndpointBuilder, endpoints []*endpoint.LocalityL
 						Value: weight,
 					},
 				}
-				// TODO: figure out a way to extract locality data from the gateway public endpoints in meshNetworks
-				gwEp.Metadata = util.BuildLbEndpointMetadata("", network, model.IstioMutualTLSModeLabel, b.push)
 				lbEndpoints = append(lbEndpoints, gwEp)
 			}
 		}
