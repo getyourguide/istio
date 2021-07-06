@@ -21,10 +21,8 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/wrappers"
 
-	"istio.io/istio/pilot/pkg/model"
 	"istio.io/istio/pilot/pkg/networking"
 	"istio.io/istio/pilot/pkg/networking/util"
-	"istio.io/istio/pkg/config/labels"
 )
 
 // EndpointsByNetworkFilter is a network filter function to support Split Horizon EDS - filter the endpoints based on the network
@@ -76,11 +74,6 @@ func (b *EndpointBuilder) EndpointsByNetworkFilter(endpoints []*LocLbEndpointsAn
 				if !b.canViewNetwork(epNetwork) {
 					continue
 				}
-				// cross-network traffic relies on mTLS to be enabled for SNI routing
-				// TODO BTS may allow us to work around this
-				if b.mtlsChecker.isMtlsDisabled(lbEp) {
-					continue
-				}
 
 				// Remote network endpoint which can not be accessed directly from local network.
 				// Increase the weight counter
@@ -119,8 +112,6 @@ func (b *EndpointBuilder) EndpointsByNetworkFilter(endpoints []*LocLbEndpointsAn
 						Value: weight,
 					},
 				}
-				// TODO: figure out a way to extract locality data from the gateway public endpoints in meshNetworks
-				gwEp.Metadata = util.BuildLbEndpointMetadata(network, model.IstioMutualTLSModeLabel, "", "", b.clusterID, labels.Instance{})
 				// Currently gateway endpoint does not support tunnel.
 				lbEndpoints.append(gwEp, networking.MakeTunnelAbility())
 			}
